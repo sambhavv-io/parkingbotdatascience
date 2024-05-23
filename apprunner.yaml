@@ -1,11 +1,9 @@
 version: 1.0
-runtime: python3.11
-  commands: 
-    build:
-     - pip3 install pipenv
-    - pipenv install -r requirements.txt
+runtime: python
+build:
+  commands:
+    - python3 -m venv myenv
+    - source myenv/bin/activate
+    - pip3 install -r requirements.txt
 run:
-  command: pipenv run gunicorn -w 4 -b 0.0.0.0:8000 app:app
-  network:
-    port: 8000
-     
+  command: python3 app.py
